@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Usuario: {{ user.username }}
+{% if user.username == 'admin' %}
+<h1>LISTADO DE VOLUNTARIOS</h1>
+<table>
+	<thead>
+		<tr>
+			<th>id_voluntario</th><th>nombre</th><th>apellido</th><td>rol</td><td>ci</td><td>correo</td><td>horas_acumuladas</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for voluntario in voluntarios %}
+		<tr>
+			<td>{{ voluntario.id_voluntario }}</td>
+			<td>{{ voluntario.nombre }}</td>
+			<td>{{ voluntario.apellido }}</td>
+			<td>{{ voluntario.rol }}</td>
+			<td>{{ voluntario.ci }}</td>
+			<td>{{ voluntario.correo }}</td>
+			<td>{{ voluntario.horas_acumuladas }}</td>
+			{% if user.username == 'admin'%}
+			<td><a href="{% url 'eliminar_voluntario' voluntario.id_voluntario %}">Eliminar</a></td>
+			{% endif %}
+			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
+		</tr>
+		{% endfor%}		
+	</tbody>
+</table>
+<a href="{% url 'crear_voluntario' %}">Nueva voluntario</a>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}
+

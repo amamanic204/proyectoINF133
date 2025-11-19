@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Usuario: {{ user.username }}
+{% if user.username == 'admin' %}
+<h1>LISTADO DE ASISTENCIAS</h1>
+<table>
+	<thead>
+		<tr>
+			<th>id_asistencia</th><th>id_evento</th><th>id_voluntario</th><th>id_inscrito</th><th>hora_llegada</th><th>hora_salida</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for asistencia in asistencias %}
+		<tr>
+			<td>{{ asistencia.id_asistencia }}</td>
+			<td>{{ asistencia.evento.id_evento }}</td>
+			<td>{{ asistencia.voluntario.id_voluntario }}</td>
+			<td>{{ asistencia.inscrito.id_inscrito }}</td>
+			<td>{{ asistencia.hora_llegada }}</td>
+			<td>{{ asistencia.hora_salida }}</td>
+			{% if user.username == 'admin'%}
+			<td><a href="{% url 'eliminar_asistencia' asistencia.id_asistencia %}">Eliminar</a></td>
+			{% endif %}
+			<td><a href="{% url 'modificar_asistencia' asistencia.id_asistencia %}">Modificar</a></td>
+		</tr>
+		{% endfor %}		
+	</tbody>
+</table>	
+<img src="">
+<a href="{% url 'crear_asistencia' %}">Nuevo Asistencia</a>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

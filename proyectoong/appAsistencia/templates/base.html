@@ -3,68 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Proyecto WEb III</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: monospace;
-}
-body {
-	width: 100%;
-	height: 100vh;
-	background-color: #f18701;
-}
-.container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: space-evenly;
-	width: 80%;
-	min-height: 100%;
-	margin: auto;
-}
-header, .cuerpo, footer {
-	width: 100%;
-	padding: 20px;
-	border-radius: 20px;
-}
-header {
-	background-color: #f35b04;
-}
-header strong {
-	color: white;
-	font-size: 20px;
-	margin: 0 20px;
-}
-header a {
-	text-decoration: none;
-	color: black;
-}
-.cuerpo {
-	min-height: 70vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: #f7b801;
-}
-table, th, td {
-	border: 2px solid black;
-	padding: 4px;
-}
-table {
-	border-collapse: collapse;
-}
-footer {
-	text-align: center;
-	background-color: #7678ed;
-}
-h2 {
-	color: white;
-}
+
 </style>
 <body>
 <div class="container">
@@ -75,7 +19,7 @@ h2 {
 			<a href="">tiendas</a>
 			<a href="">compras</a>
 		</nav>
-	</header>	
+	</header>
 	<div class="cuerpo">
 		{% block content %}
 		{% endblock %}

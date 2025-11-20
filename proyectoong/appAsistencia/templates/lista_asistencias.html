@@ -2,7 +2,7 @@
 
 {% block content %}
 Usuario: {{ user.username }}
-{% if user.username == 'admin' %}
+{% if user.is_superuser %}
 <h1>LISTADO DE ASISTENCIAS</h1>
 <table>
 	<thead>
@@ -24,9 +24,9 @@ Usuario: {{ user.username }}
 			{% endif %}
 			<td><a href="{% url 'modificar_asistencia' asistencia.id_asistencia %}">Modificar</a></td>
 		</tr>
-		{% endfor %}		
+		{% endfor %}
 	</tbody>
-</table>	
+</table>
 <img src="">
 <a href="{% url 'crear_asistencia' %}">Nuevo Asistencia</a>
 {% else %}

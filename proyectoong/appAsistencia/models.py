@@ -50,4 +50,4 @@ class Asistencia(models.Model):
 	hora_salida = models.DateTimeField()
 	class Meta:
 		managed = False
-		db_table = 'asistencias'
+		db_table = 'asistencia'

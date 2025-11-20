@@ -2,7 +2,7 @@
 
 {% block content %}
 Usuario: {{ user.username }}
-{% if user.username == 'admin' %}
+{% if user.is_superuser %}
 <h1>LISTADO DE EVENTOS</h1>
 <table>
 	<thead>

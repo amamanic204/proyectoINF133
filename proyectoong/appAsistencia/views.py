@@ -163,7 +163,7 @@ def modificar_asistencia(request, id):
 			asistencia.inscrito = get_object_or_404(Inscrito, id_inscrito=form.cleaned_data['id_inscrito'])
 			asistencia.hora_llegada = form.cleaned_data['hora_llegada']
 			asistencia.hora_salida = form.cleaned_data['hora_salida']
-			inscrito.save()
+			asistencia.save()
 			return redirect('listar_inscritos')
 	else:
 		form = InscritoForm(initial={

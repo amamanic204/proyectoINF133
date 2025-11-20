@@ -2,7 +2,7 @@
 
 {% block content %}
 Usuario: {{ user.username }}
-{% if user.username == 'admin' %}
+{% if user.is_superuser %}
 <h1>LISTADO DE VOLUNTARIOS</h1>
 <table>
 	<thead>
@@ -25,7 +25,7 @@ Usuario: {{ user.username }}
 			{% endif %}
 			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
 		</tr>
-		{% endfor%}		
+		{% endfor%}
 	</tbody>
 </table>
 <a href="{% url 'crear_voluntario' %}">Nueva voluntario</a>

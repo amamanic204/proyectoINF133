@@ -74,6 +74,10 @@ WSGI_APPLICATION = 'proyectoong.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'principal'
+LOGOUT_REDIRECT_URL = 'login'
+
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',

@@ -43,6 +43,11 @@ header a {
 	align-items: center;
 	background-color: #f7b801;
 }
+
+.cuerpo a{
+	text-decoration: none;
+	color: black;
+}
 table, th, td {
 	border: 2px solid black;
 	padding: 4px;
@@ -50,6 +55,7 @@ table, th, td {
 table {
 	border-collapse: collapse;
 }
+
 footer {
 	text-align: center;
 	background-color: #7678ed;

@@ -190,3 +190,20 @@ def modificar_asistencia(request, id):
 # | hora_llegada  | datetime | YES  |     | NULL    |                |
 # | hora_salida   | datetime | YES  |     | NULL    |                |
 # +---------------+---
+
+
+#Funcionalidad Voluntarios
+
+#Horas Acumuladas de Voluntarios
+def horas_acumuladas(request):
+    voluntarios = Voluntario.objects.all()
+    if request.method == 'POST':
+        id_voluntario = request.POST.get('voluntario')
+        if id_voluntario:
+            return redirect('ver_horas_voluntario', id_voluntario = id_voluntario)
+    return render(request, 'appAsistencia/Funcionalidades/form_horas_acumuladas.html', {"voluntarios" : voluntarios})
+
+def ver_horas_voluntario(request, id_voluntario):
+	voluntario = get_object_or_404(Voluntario, id_voluntario=id_voluntario)
+	return render(request, 'appAsistencia/Funcionalidades/horas_acumuladas.html', { 'voluntario': voluntario })
+

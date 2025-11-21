@@ -20,4 +20,6 @@ urlpatterns = [
     path('nueva_asistencia/', views.crear_asistencia, name='crear_asistencia'),
     path('eliminar_asistencia/<int:id>', views.eliminar_asistencia, name='eliminar_asistencia'),
     path('modificar_asistencia/<int:id>', views.modificar_asistencia, name='modificar_asistencia'),
+    path('horas_acumuladas/', views.horas_acumuladas, name='horas_acumuladas'),
+    path('verhoras/<int:id_voluntario>/', views.ver_horas_voluntario, name = 'ver_horas_voluntario'),
 ]

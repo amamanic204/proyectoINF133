@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Front_end/css/styles.css' %}">
+    <title>Pagina ONG</title>
+</head>
+<body>
+    <header>
+        <h1>Pagina Principal ONG</h1>
+        <p>Bienvenido</p>
+    </header>
+    <main>
+        <section>
+            <p>Panel de Control: <span><a href="{% url 'principal' %}">Principal</a></span></p>
+        </section>
+    </main>
+</body>
+</html>

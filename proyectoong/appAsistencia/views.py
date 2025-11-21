@@ -4,10 +4,12 @@ from .forms import EventoForm, VoluntarioForm, InscritoForm, AsistenciaForm
 
 # Create your views here.
 def principal(request):
-	return render(request, 'principal.html')
+	return render(request, 'appAsistencia/principal.html')
+
+#  CRUD Eventos
 def listar_eventos(request):
 	eventos = Evento.objects.all()
-	return render(request, 'lista_eventos.html', { 'eventos': eventos })
+	return render(request, 'appAsistencia/Eventos/lista_eventos.html', { 'eventos': eventos })
 def crear_evento(request):
 	if request.method == 'POST':
 		form = EventoForm(request.POST)
@@ -20,7 +22,7 @@ def crear_evento(request):
 			return redirect('listar_eventos')
 	else:
 		form = EventoForm()
-		return render(request, 'nuevo_evento.html', { 'form': form })
+		return render(request, 'appAsistencia/Eventos/nuevo_evento.html', { 'form': form })
 def eliminar_evento(request, id):
 	evento = get_object_or_404(Evento, id_evento=id)
 	evento.delete()
@@ -42,10 +44,12 @@ def modificar_evento(request, id):
 			'proposito': evento.proposito,
 			'fecha_evento': evento.fecha_evento,
 		})
-		return render(request, 'actualizar_evento.html', { 'form': form })
+		return render(request, 'appAsistencia/Eventos/actualizar_evento.html', { 'form': form })
+
+#  CRUD Voluntarios
 def listar_voluntarios(request):
 	voluntarios = Voluntario.objects.all()
-	return render(request, 'lista_voluntarios.html', { 'voluntarios': voluntarios })
+	return render(request, 'appAsistencia/Voluntarios/lista_voluntarios.html', { 'voluntarios': voluntarios })
 def crear_voluntario(request):
 	if request.method == 'POST':
 		form = VoluntarioForm(request.POST)
@@ -61,7 +65,7 @@ def crear_voluntario(request):
 			return redirect('listar_voluntarios')
 	else:
 		form = VoluntarioForm()
-		return render(request, 'nuevo_voluntario.html', { 'form': form })
+		return render(request, 'appAsistencia/Voluntarios/nuevo_voluntario.html', { 'form': form })
 def eliminar_voluntario(request, id):
 	voluntario = get_object_or_404(Voluntario, id_voluntario=id)
 	voluntario.delete()
@@ -89,10 +93,13 @@ def modificar_voluntario(request, id):
 			'correo': voluntario.correo,
 			'horas_acumuladas': voluntario.horas_acumuladas,
 		})
-		return render(request, 'actualizar_voluntario.html', { 'form': form })
+		return render(request, 'appAsistencia/Voluntarios/actualizar_voluntario.html', { 'form': form })
+
+#  CRUD Inscritos
 def listar_inscritos(request):
 	inscritos = Inscrito.objects.all()
-	return render(request, 'lista_inscritos.html', { 'inscritos': inscritos })
+	return render(request, 'appAsistencia/Inscritos/lista_inscritos.html', { 'inscritos': inscritos })
+
 def crear_inscrito(request):
 	if request.method == 'POST':
 		form = InscritoForm(request.POST)
@@ -106,7 +113,7 @@ def crear_inscrito(request):
 			return redirect('listar_inscritos')
 	else:
 		form = InscritoForm()
-		return render(request, 'nuevo_inscrito.html', { 'form': form })
+		return render(request, 'appAsistencia/Inscritos/nuevo_inscrito.html', { 'form': form })
 def eliminar_inscrito(request, id):
 	inscrito = get_object_or_404(Inscrito, id_inscrito=id)
 	inscrito.delete()
@@ -130,10 +137,12 @@ def modificar_inscrito(request, id):
 			'ci': inscrito.ci,
 			'fecha_nacimiento': inscrito.fecha_nacimiento,
 		})
-		return render(request, 'actualizar_inscrito.html', { 'form': form })
+		return render(request, 'appAsistencia/Inscritos/actualizar_inscrito.html', { 'form': form })
+
+#  CRUD Asistencias
 def listar_asistencias(request):
 	asistencias = Asistencia.objects.all()
-	return render(request, 'lista_asistencias.html', { 'asistencias': asistencias })
+	return render(request, 'appAsistencia/Asistencias/lista_asistencias.html', { 'asistencias': asistencias })
 def crear_asistencia(request):
 	if request.method == 'POST':
 		form = AsistenciaForm(request.POST)
@@ -148,7 +157,7 @@ def crear_asistencia(request):
 			return redirect('listar_asistencias')
 	else:
 		form = AsistenciaForm()
-		return render(request, 'nueva_asistencia.html', { 'form': form })
+		return render(request, 'appAsistencia/Asistencias/nueva_asistencia.html', { 'form': form })
 def eliminar_asistencia(request, id):
 	asistencia = get_object_or_404(Asistencia, id_asistencia=id)
 	asistencia.delete()
@@ -173,7 +182,7 @@ def modificar_asistencia(request, id):
 			'hora_llegada': asistencia.hora_llegada,
 			'hora_salida': asistencia.hora_salida,
 		})
-		return render(request, 'actualizar_inscrito.html', { 'form': form })
+		return render(request, 'appAsistencia/Asistencias/actualizar_inscrito.html', { 'form': form })
 # id_asistencia | int      | NO   | PRI | NULL    | auto_increment |
 # | id_evento     | int      | YES  | MUL | NULL    |                |
 # | id_voluntario | int      | YES  | MUL | NULL    |                |

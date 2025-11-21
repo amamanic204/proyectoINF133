@@ -7,10 +7,13 @@ from django.contrib.auth import login
 def index(request):
     return render(request, 'Front_end/index.html')
 
+#Cerrar Sesión Cuenta
 def cerrar_sesion(request):
     logout(request)
     return redirect('index')
 
+
+#Crear cuenta
 def registro (request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)

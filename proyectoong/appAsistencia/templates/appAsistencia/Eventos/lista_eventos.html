@@ -17,7 +17,7 @@ Usuario: {{ user.username }}
 			<td>{{ evento.nombre_evento }}</td>
 			<td>{{ evento.proposito }}</td>
 			<td>{{ evento.fecha_evento }}</td>
-			{% if user.username == 'admin'%}
+			{% if user.is_superuser or user.username == 'admin'%}
 			<td><a href="{% url 'eliminar_evento' evento.id_evento %}">Eliminar</a></td>
 			{% endif %}
 			<td><a href="{% url 'modificar_evento' evento.id_evento %}">Modificar</a></td>

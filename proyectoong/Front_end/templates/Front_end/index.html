@@ -9,13 +9,16 @@
 </head>
 <body>
     <header>
-        <h1>Pagina Principal ONG</h1>
-        <p>Bienvenido</p>
+        <div class="titulo">
+            <h1>Pagina Principal ONG</h1>
+            <p>Bienvenido</p>
+        </div>
         <div class="login">
             {% if user.is_authenticated %}
-            <P>¡Bievenido {{ user.username }}! <span><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar Sesión?')">Cerrar Sesion</a></span></P>
+            <P class="user">{{ user.username |first|upper}}</P>
+            <p><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar sesión?')" class="login_link">Cerrar Sesión</a></p>
             {% else %}
-            <P>INICIAR SESION <span><a href="{% url 'login' %}">...</a></span></P>
+            <P class="login_link"><a href="{% url 'login' %}">Iniciar Sesión</a></P>
             {% endif %}
         </div>
     </header>
@@ -25,6 +28,8 @@
             <p>Panel de Control: <span><a href="{% url 'principal' %}">Principal</a></span></p>
             {% endif%}
         </section>
+        {% block content %}
+        {% endblock %}
     </main>
 </body>
 </html>

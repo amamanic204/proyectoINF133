@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Proyecto WEb III</title>
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'appAsistencia/css/styles.css' %}">
 	{% block estilos_css %} {% endblock %}
 </head>
 <style>
@@ -20,6 +20,9 @@
 			<a href="{% url 'listar_voluntarios' %}">Voluntarios</a>
 			<a href="{% url 'listar_inscritos' %}">Inscritos</a>
 			<a href="{% url 'listar_asistencias' %}">Lista Asistencias</a>
+		</nav>
+		<nav>
+			<a href="{% url 'index' %}">Volver</a>
 		</nav>
 	</header>
 	<div class="cuerpo">

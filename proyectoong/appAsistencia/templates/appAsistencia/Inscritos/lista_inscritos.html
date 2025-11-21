@@ -7,7 +7,7 @@ Usuario: {{ user.username }}
 <table>
 	<thead>
 		<tr>
-			<th>id_inscrito</th><th>nombre</th><th>apellido</th><td>ci</td><td>correo</td><td>fecha_nacimiento</td>
+			<th>id_inscrito</th><th>nombre</th><th>apellido</th><td>ci</td><td>fecha_nacimiento</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,7 +18,7 @@ Usuario: {{ user.username }}
 			<td>{{ inscrito.apellido }}</td>
 			<td>{{ inscrito.ci }}</td>
 			<td>{{ inscrito.fecha_nacimiento }}</td>
-			{% if user.username == 'admin'%}
+			{% if user.is_superuser or user.username == 'admin'%}
 			<td><a href="{% url 'eliminar_inscrito' inscrito.id_inscrito %}">Eliminar</a></td>
 			{% endif %}
 			<td><a href="{% url 'modificar_inscrito' inscrito.id_inscrito %}">Modificar</a></td>

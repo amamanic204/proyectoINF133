@@ -22,4 +22,5 @@ urlpatterns = [
     path('modificar_asistencia/<int:id>', views.modificar_asistencia, name='modificar_asistencia'),
     path('horas_acumuladas/', views.horas_acumuladas, name='horas_acumuladas'),
     path('verhoras/<int:id_voluntario>/', views.ver_horas_voluntario, name = 'ver_horas_voluntario'),
+    path('cambiar_rol/<int:id_voluntario>/', views.cambiar_rol, name='cambiar_rol'),
 ]

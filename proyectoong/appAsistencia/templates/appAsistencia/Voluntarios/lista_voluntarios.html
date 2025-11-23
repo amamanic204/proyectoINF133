@@ -10,7 +10,7 @@ Usuario: {{ user.username }}
 <table>
 	<thead>
 		<tr>
-			<th>id_voluntario</th><th>nombre</th><th>apellido</th><td>rol</td><td>ci</td><td>correo</td><td>horas_acumuladas</td>
+			<th>id_voluntario</th><th>nombre</th><th>apellido</th><td>rol</td><td>ci</td><td>correo</td><td>horas_acumuladas</td><td></td><td></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,6 +27,7 @@ Usuario: {{ user.username }}
 			<td><a href="{% url 'eliminar_voluntario' voluntario.id_voluntario %}">Eliminar</a></td>
 			{% endif %}
 			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
+			<td><a href="{% url 'cambiar_rol' voluntario.id_voluntario %}">Cambiar rol</a></td>
 		</tr>
 		{% endfor%}
 	</tbody>

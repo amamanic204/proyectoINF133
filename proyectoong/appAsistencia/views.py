@@ -23,10 +23,14 @@ def crear_evento(request):
 	else:
 		form = EventoForm()
 		return render(request, 'appAsistencia/Eventos/nuevo_evento.html', { 'form': form })
+	
+
 def eliminar_evento(request, id):
 	evento = get_object_or_404(Evento, id_evento=id)
 	evento.delete()
 	return redirect('listar_eventos')
+
+
 def modificar_evento(request, id):
 	evento = get_object_or_404(Evento, id_evento=id)
 	if request.method == 'POST':
@@ -143,6 +147,8 @@ def modificar_inscrito(request, id):
 def listar_asistencias(request):
 	asistencias = Asistencia.objects.all()
 	return render(request, 'appAsistencia/Asistencias/lista_asistencias.html', { 'asistencias': asistencias })
+
+
 def crear_asistencia(request):
 	if request.method == 'POST':
 		form = AsistenciaForm(request.POST)
@@ -158,6 +164,7 @@ def crear_asistencia(request):
 	else:
 		form = AsistenciaForm()
 		return render(request, 'appAsistencia/Asistencias/nueva_asistencia.html', { 'form': form })
+
 def eliminar_asistencia(request, id):
 	asistencia = get_object_or_404(Asistencia, id_asistencia=id)
 	asistencia.delete()

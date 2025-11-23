@@ -1,3 +1,161 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e6f2ea; 
+    color: #2c3e50;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    min-height: 100%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+
+header {
+    background-color: #2e8b57; 
+    padding: 20px 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header strong {
+    color: #ffffff;
+    font-size: 22px;
+}
+
+header a {
+    text-decoration: none;
+    color: #f0f0f0;
+    margin-left: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #a3d9a5; 
+}
+
+.cuerpo {
+    min-height: 70vh;
+    padding: 30px;
+    background-color: #c8e6c9;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.cuerpo a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #2e8b57; 
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2e8b57;
+    color: #ffffff;
+}
+
+td {
+    background-color: #e6f2ea;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #2e8b57;
+    color: #ffffff;
+}
+
+
+h2 {
+    color: #1b5e20; 
+    margin-bottom: 15px;
+}
+
+button, .btn {
+    background-color: #2e8b57;
+    color: white;
+    border: 1px solid #1b5e20;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #1b5e20; 
+    border-color: #a3d9a5; 
+}
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    border: 2px solid #4CAF50; 
+    border-radius: 6px;
+    background-color: #66bb6a; 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #388e3c; 
+    border-color: #1b5e20;
+    color: white;
+}
+
+input, select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #2e8b57;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 300px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #1b5e20;
+    outline: none;
+}
+
+
+
+
+/********/
+/*Original*/
+/*
 * {
 	margin: 0;
 	padding: 0;
@@ -72,3 +230,4 @@ footer {
 h2 {
 	color: white;
 }
+*/

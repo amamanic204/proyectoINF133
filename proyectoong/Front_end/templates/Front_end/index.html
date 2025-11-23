@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'Front_end/css/styles.css' %}">
     <title>Pagina ONG</title>
 </head>
-<body>
+<body style="background-color: #d4f0dc;">
     <header>
         <div class="titulo">
             <h1>Pagina Principal ONG</h1>
@@ -16,7 +16,7 @@
         <div class="login">
             {% if user.is_authenticated %}
             <P class="user">{{ user.username |first|upper}}</P>
-            <p><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar sesión?')" class="login_link">Cerrar Sesión</a></p>
+            <p><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar sesión?')" class="login_link" style="color: white;">Cerrar Sesión</a></p>
             {% else %}
             <P class="login_link"><a href="{% url 'login' %}">Iniciar Sesión</a></P>
             {% endif %}
@@ -25,11 +25,14 @@
     <main>
         <section>
             {% if user.is_authenticated %}
-            <p>Panel de Control: <span><a href="{% url 'principal' %}">Principal</a></span></p>
+            <p>Panel de Control: <span><a href="{% url 'principal' %}" style="color: white;">Principal</a></span></p>
             {% endif%}
         </section>
         {% block content %}
         {% endblock %}
     </main>
+    <footer>
+        <p>Derechos Reservados ONG - ©Grupo 5</p>
+    </footer>
 </body>
 </html>

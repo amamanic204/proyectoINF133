@@ -10,25 +10,25 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #f35b04;
+    background-color: #2e8b57; 
     padding: 20px;
 }
 
 header .titulo{
     text-align: center;
+    color: white;
 }
 
 header .login{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
     text-align: center;
 }
 
 header .login .user{
     color: white;
-    background: black;
+    background: #3cb371; 
     padding: 10px 15px;
     border-radius: 24px;
     font-size: 24px;
@@ -36,14 +36,154 @@ header .login .user{
 
 header .login .login_link a{
     text-decoration: none;
-    background: black;
+    background: #3cb371; 
     padding: 10px 15px;
     border-radius: 24px;
-    color: red;
+    color: white;
     font-size: 14px;
 }
 
-h1{
-    color: white;
+header .login .login_link a:hover{
+    background: #2e8b57; 
 }
 
+h1, h2{
+    color: white;
+}
+/*Main index*/
+
+main { 
+    position: relative; 
+    padding: 50px; 
+    min-height: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    background-color: #d4f0dc; 
+    overflow: hidden; 
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2e8b57;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+
+
+main::before {
+    content: "DJANGO";
+    position: absolute;
+    font-size: 120px;
+    color: rgba(60, 179, 113, 0.1); 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    pointer-events: none; 
+    z-index: 0;
+}
+
+main section, main p {
+    position: relative;
+    z-index: 1; 
+}
+
+main a {
+    text-decoration: none;
+    background-color: #3cb371;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+main a:hover {
+    background-color: #2e8b57; 
+}
+
+main p span {
+    margin-left: 10px;
+}
+
+
+/*Estilos de formulario*/
+
+body.login-body {
+    background-color: #d4f0dc; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: monospace;
+}
+
+
+form {
+    background-color: #2e8b57; 
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 24px;
+    background-color: #3cb371; 
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2e8b57;
+}
+
+p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+p a {
+    color: #3cb371;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    color: #2e8b57;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}

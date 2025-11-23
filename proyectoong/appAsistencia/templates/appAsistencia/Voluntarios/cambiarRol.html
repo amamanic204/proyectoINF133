@@ -1,0 +1,21 @@
+{% extends 'appAsistencia/base.html' %}
+
+{% block content %}
+<h2>Nombre: {{ voluntario.nombre }} {{ voluntario.apellido }}</h2>
+<h2>Correo Electronico: {{ voluntario.correo}}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="rol">Selecciona el nuevo rol:</label>
+    <select name="rol" id="rol">
+        <option value="Logistica" {% if voluntario.rol == "Logistica" %}selected{% endif %}>Logistica</option>
+        <option value="Cocina" {% if voluntario.rol == "Cocina" %}selected{% endif %}>Cocina</option>
+    </select>
+    <button type="submit">Aceptar</button>
+</form>
+    <a href="{% url 'listar_voluntarios' %}">
+        <button type="reset">Cancelar</button>
+    </a>
+{% endblock %}
+
+

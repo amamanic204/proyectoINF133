@@ -207,3 +207,11 @@ def ver_horas_voluntario(request, id_voluntario):
 	voluntario = get_object_or_404(Voluntario, id_voluntario=id_voluntario)
 	return render(request, 'appAsistencia/Funcionalidades/horas_acumuladas.html', { 'voluntario': voluntario })
 
+#Cambiar Rol
+def cambiar_rol(request, id_voluntario):
+    voluntario = get_object_or_404(Voluntario, id_voluntario=id_voluntario)
+    if request.method == 'POST':
+        voluntario.rol = 'Cocina' if voluntario.rol == 'Logistica' else 'Logistica'
+        voluntario.save()
+        return redirect('listar_voluntarios')
+    return render(request, 'appAsistencia/Voluntarios/cambiarRol.html', {'voluntario': voluntario})

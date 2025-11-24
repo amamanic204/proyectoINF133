@@ -22,5 +22,7 @@ class AsistenciaForm(forms.Form):
 	id_evento = forms.ChoiceField(choices={evento.id_evento: evento.nombre_evento for evento in eventos})
 	voluntarios = Voluntario.objects.all()
 	id_voluntario = forms.ChoiceField(choices={voluntario.id_voluntario: voluntario.nombre+" "+voluntario.apellido for voluntario in voluntarios})
+	inscritos = Inscrito.objects.all()
+	id_inscrito = forms.ChoiceField(choices={inscrito.id_inscrito: inscrito.nombre+" "+inscrito.apellido for inscrito in inscritos})
 	hora_llegada = forms.DateTimeField()
 	hora_salida = forms.DateTimeField()

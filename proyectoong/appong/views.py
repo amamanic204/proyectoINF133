@@ -156,6 +156,7 @@ def crear_asistencia(request):
 			Asistencia.objects.create(
 				evento = get_object_or_404(Evento, id_evento=form.cleaned_data['id_evento']),
 				voluntario = get_object_or_404(Voluntario, id_voluntario=form.cleaned_data['id_voluntario']),
+				inscrito = get_object_or_404(Inscrito, id_inscrito=form.cleaned_data['id_inscrito']),
 				hora_llegada = form.cleaned_data['hora_llegada'],
 				hora_salida = form.cleaned_data['hora_salida']
 			)
@@ -175,6 +176,7 @@ def modificar_asistencia(request, id):
 		if form.is_valid():
 			asistencia.evento = get_object_or_404(Evento, id_evento=form.cleaned_data['id_evento'])
 			asistencia.voluntario = get_object_or_404(Voluntario, id_voluntario=form.cleaned_data['id_voluntario'])
+			asistencia.inscrito = get_object_or_404(Inscrito, id_inscrito=form.cleaned_data['id_inscrito'])
 			asistencia.hora_llegada = form.cleaned_data['hora_llegada']
 			asistencia.hora_salida = form.cleaned_data['hora_salida']
 			asistencia.save()
@@ -183,6 +185,7 @@ def modificar_asistencia(request, id):
 		form = AsistenciaForm(initial={
 			'id_evento': asistencia.evento.id_evento,
 			'id_voluntario': asistencia.voluntario.id_voluntario,
+			'id_inscrito': asistencia.inscrito.id_inscrito,
 			'hora_llegada': asistencia.hora_llegada,
 			'hora_salida': asistencia.hora_salida,
 		})

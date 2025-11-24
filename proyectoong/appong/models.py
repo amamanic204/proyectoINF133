@@ -41,8 +41,13 @@ class Asistencia(models.Model):
 		on_delete = models.CASCADE,
 		db_column = 'id_voluntario'
 	)
+	inscrito = models.ForeignKey(
+		Inscrito,
+		on_delete = models.CASCADE,
+		db_column = 'id_inscrito'
+	)
 	hora_llegada = models.DateTimeField()
 	hora_salida = models.DateTimeField()
 	class Meta:
 		managed = False
-		db_table = 'asistencias'
+		db_table = 'asistencia'

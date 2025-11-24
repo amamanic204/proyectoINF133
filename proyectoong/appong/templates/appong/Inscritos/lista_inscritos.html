@@ -1,0 +1,35 @@
+{% extends 'appong/base.html' %}
+
+{% block content %}
+Usuario: {{ user.username }}
+{% if user.is_authenticated %}
+<h1>LISTADO DE INSCRITOS</h1>
+<table>
+	<thead>
+		<tr>
+			<th>id_inscrito</th><th>nombre</th><th>apellido</th><th>ci</th><th>fecha_nacimiento</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for inscrito in inscritos %}
+		<tr>
+			<td>{{ inscrito.id_inscrito }}</td>
+			<td>{{ inscrito.nombre }}</td>
+			<td>{{ inscrito.apellido }}</td>
+			<td>{{ inscrito.ci }}</td>
+			<td>{{ inscrito.fecha_nacimiento }}</td>
+			{% if user.is_superuser %}
+			<td><a href="{% url 'eliminar_inscrito' inscrito.id_inscrito %}">Eliminar</a></td>
+			<td><a href="{% url 'modificar_inscrito' inscrito.id_inscrito %}">Modificar</a></td>
+			{% endif %}
+		</tr>
+		{% endfor%}
+	</tbody>
+</table>
+{% if user.is_superuser %}
+<a href="{% url 'crear_inscrito' %}">Nueva inscrito</a>
+{% endif %}
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

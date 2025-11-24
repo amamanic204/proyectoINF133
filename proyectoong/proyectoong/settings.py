@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import pymysql
-pymysql.install_as_MySQLdb()
+# import pymysql
+# pymysql.install_as_MySQLdb()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appAsistencia.apps.AppasistenciaConfig',
     'Front_end.apps.FrontEndConfig',
+    'appong.apps.AppongConfig',
 ]
 
 MIDDLEWARE = [
@@ -91,7 +91,8 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'LoboBlanco152',
+        # 'PASSWORD': 'LoboBlanco152',
+        'PASSWORD': '12345678'
     }
 }
 

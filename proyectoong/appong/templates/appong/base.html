@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Proyecto WEb III</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'appong/css/styles.css' %}">
+	{% block estilos_css %} 
+	{% endblock %}
+</head>
+<body>
+<div class="container">
+	<header>
+		<nav>
+		    <a href="{% url 'principal' %}" id="logo"><strong>ONG</strong></a>
+		    <a href="{% url 'listar_eventos' %}" class="btn">Eventos</a>
+		    <a href="{% url 'listar_voluntarios' %}" class="btn">Voluntarios</a>
+		    <a href="{% url 'listar_inscritos' %}" class="btn">Inscritos</a>
+		    <a href="{% url 'listar_asistencias' %}" class="btn">Asistencias</a>
+		</nav>	
+		<nav>
+    		<a href="{% url 'index' %}" class="btn">Volver</a>
+		</nav>
+	</header>
+	<div class="cuerpo">
+		{% block content %}
+		{% endblock %}
+	</div>
+	<footer>
+		<p>©Grupo 5</p>
+	</footer>
+</div>
+</body>
+</html>

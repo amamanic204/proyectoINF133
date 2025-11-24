@@ -1,0 +1,16 @@
+{% extends 'appong/base.html' %}
+
+{% block content %}
+Usuario: {{ user.username }}
+{% if user.is_superuser %}
+<h1>REGISTRAR VOLUNTARIO</h1>
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Enviar</button>
+	<button type="reset">Cancelar</button>
+</form>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

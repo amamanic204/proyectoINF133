@@ -1,0 +1,28 @@
+{% extends 'appong/base.html' %}
+
+{% block content %}
+Usuario: {{ user.username }}
+{% if user.is_superuser %}
+<h2>Horas acumuladas de {{ voluntario.nombre }}</h2>
+<table>
+    <thead>
+        <tr>
+            <td>nombre</td>
+            <td>apellido</td>
+            <td>rol</td>
+            <td>horas_acumuladas</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ voluntario.nombre }}</td>
+            <td>{{ voluntario.apellido }}</td>
+            <td>{{ voluntario.rol }}</td>
+            <td>{{ voluntario.horas_acumuladas }}</td>
+        </tr>
+    </tbody>
+</table>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

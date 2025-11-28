@@ -1,6 +1,8 @@
-{% extends 'appong/base.html' %}
+{% extends 'Front_end/index.html' %}
+{# {% extends 'appong/base.html' %} #}
 
 {% block content %}
+<div class="ong">
 Usuario: {{ user.username }}
 {% if user.is_authenticated %}
 <h1>LISTADO DE VOLUNTARIOS</h1>
@@ -39,6 +41,5 @@ Usuario: {{ user.username }}
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>
 {% endif %}
-
+</div>
 {% endblock %}
-

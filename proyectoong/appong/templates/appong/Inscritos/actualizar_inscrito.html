@@ -1,4 +1,5 @@
-{% extends 'appong/base.html' %}
+{% extends 'Front_end/index.html' %}
+{# {% extends 'appong/base.html' %} #}
 
 {% block content %}
 Usuario: {{ user.username }}
@@ -8,7 +9,9 @@ Usuario: {{ user.username }}
 	{% csrf_token %}
 	{{ form.as_p }}
 	<button type="submit">Actualizar</button>
-	<button type="reset">Cancelar</button>
+	<a href="{% url 'listar_inscritos' %}" class="cancel-link">
+        Cancelar
+    </a>
 </form>
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>

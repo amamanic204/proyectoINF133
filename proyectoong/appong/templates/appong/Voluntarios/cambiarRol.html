@@ -1,9 +1,9 @@
-{% extends 'appong/base.html' %}
+{% extends 'Front_end/index.html' %}
 
 {% block content %}
+<div class="ong">
 <h2>Nombre: {{ voluntario.nombre }} {{ voluntario.apellido }}</h2>
 <h2>Correo Electronico: {{ voluntario.correo}}</h2>
-
 <form method="POST">
     {% csrf_token %}
     <label for="rol">Selecciona el nuevo rol:</label>
@@ -12,10 +12,12 @@
         <option value="Cocina" {% if voluntario.rol == 'Cocina' %}selected{% endif %}>Cocina</option>
     </select>
     <button type="submit">Aceptar</button>
-</form>
-    <a href="{% url 'listar_voluntarios' %}">
-        <button type="reset">Cancelar</button>
+    <a href="{% url 'listar_voluntarios' %}" class="cancel-link">
+        Cancelar
     </a>
+    
+</form>
+</div>
 {% endblock %}
 
 

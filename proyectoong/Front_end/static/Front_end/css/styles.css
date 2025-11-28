@@ -1,11 +1,12 @@
-*{
+
+.front_end *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header{
+.front_end header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,19 +15,19 @@ header{
     padding: 20px;
 }
 
-header .titulo{
+.front_end header .titulo{
     text-align: center;
     color: white;
 }
 
-header .login{
+.front_end header .login{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-header .login .user{
+.front_end header .login .user{
     color: white;
     background: #3cb371; 
     padding: 10px 15px;
@@ -34,7 +35,7 @@ header .login .user{
     font-size: 24px;
 }
 
-header .login .login_link a{
+.front_end header .login .login_link a{
     text-decoration: none;
     background: #3cb371; 
     padding: 10px 15px;
@@ -43,28 +44,39 @@ header .login .login_link a{
     font-size: 14px;
 }
 
-header .login .login_link a:hover{
+.front_end header .login .login_link a:hover{
     background: #2e8b57; 
 }
 
-h1, h2{
+.front_end h1,.front_end h2{
     color: white;
 }
-/*Main index*/
 
-main { 
+#logo {
+    color: #ffffff;
+    font-size: 30px;
+    margin: 0 20px 0 0;
+}
+
+#logo strong:hover {
+    text-shadow: 2px 2px 0 black;
+}
+
+main {
     position: relative; 
     padding: 50px; 
-    min-height: 400px; 
+    min-height: auto; 
+    height: auto;     
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start; 
     background-color: #d4f0dc; 
-    overflow: hidden; 
+    overflow: visible; 
+    width: 100%;       
 }
 
-footer {
+.front_end footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -74,13 +86,12 @@ footer {
     text-align: center;
     padding: 10px 0;
     font-size: 14px;
+    z-index: 10; 
 }
-
-
 
 main::before {
     content: "DJANGO";
-    position: absolute;
+    position: fixed;
     font-size: 120px;
     color: rgba(60, 179, 113, 0.1); 
     top: 50%;
@@ -96,17 +107,34 @@ main section, main p {
     z-index: 1; 
 }
 
-main a {
+.ong table td a {
+    display: inline-block;  
+    padding: 6px 12px;     
+    border-radius: 12px;    
+    background-color: #3cb371;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+.ong table td a:hover {
+    background-color: #2e8b57;
+}
+
+
+.ong  a {
+    display: inline-block; 
     text-decoration: none;
     background-color: #3cb371;
     color: white;
-    padding: 10px 20px;
-    border-radius: 24px;
+    padding: 6px 12px;     
+    border-radius: 12px; 
     font-size: 16px;
     transition: background 0.3s;
 }
 
-main a:hover {
+.ong  a:hover {
     background-color: #2e8b57; 
 }
 
@@ -114,11 +142,12 @@ main p span {
     margin-left: 10px;
 }
 
-
-/*Estilos de formulario*/
-
-body.login-body {
-    background-color: #d4f0dc; 
+body {
+    margin: 0;
+    padding: 0;
+}
+.front_end.inicio {
+    background-color: #3cb371; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,8 +156,7 @@ body.login-body {
     font-family: monospace;
 }
 
-
-form {
+.ong form {
     background-color: #2e8b57; 
     padding: 30px;
     border-radius: 15px;
@@ -152,7 +180,7 @@ input[type="password"] {
 }
 
 
-button {
+.front_end button {
     width: 100%;
     padding: 10px 15px;
     border-radius: 24px;
@@ -164,26 +192,59 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+.front_end button:hover {
     background-color: #2e8b57;
 }
 
-p {
+.front_end p {
     text-align: center;
     margin-top: 15px;
 }
 
-p a {
+.front_end p a {
     color: #3cb371;
     text-decoration: none;
     font-weight: bold;
 }
 
-p a:hover {
+.front_end p a:hover {
     color: #2e8b57;
 }
 
-h2 {
+.front_end h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.front_end .log{
+    background-color: #2e8b57;
+    color: white;
+    border: 1px solid #1b5e20;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.front_end .log:hover{
+    background-color: #1b5e20; 
+    border-color: #a3d9a5; 
+}
+.front_end .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    border: 2px solid #4CAF50; 
+    border-radius: 6px;
+    background-color: #66bb6a; 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.front_end .btn:hover {
+    background-color: #388e3c; 
+    border-color: #1b5e20;
+    color: white;
 }

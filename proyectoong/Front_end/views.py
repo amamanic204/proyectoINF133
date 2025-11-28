@@ -5,7 +5,7 @@ from django.contrib.auth import login
 # Create your views here.
 
 def index(request):
-    return render(request, 'Front_end/index.html')
+    return render(request, 'appong/principal.html')
 
 #Cerrar Sesión Cuenta
 def cerrar_sesion(request):

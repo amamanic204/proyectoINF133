@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'Front_end/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'appong/css/styles.css' %}">
     <title>Pagina ONG</title>
 </head>
-<body style="background-color: #d4f0dc;">
+<body style="background-color: #d4f0dc;" class="front_end">
+    
     <header>
         <div class="titulo">
             <h1>Pagina Principal ONG</h1>
             <p>Bienvenido</p>
+            <nav>
+		       <a href="{% url 'principal' %}" id="logo" ><strong>ONG</strong></a>
+		       <a href="{% url 'listar_eventos' %}" class="btn">Eventos</a>
+		       <a href="{% url 'listar_voluntarios' %}" class="btn">Voluntarios</a>
+		       <a href="{% url 'listar_inscritos' %}" class="btn">Inscritos</a>
+		       <a href="{% url 'listar_asistencias' %}" class="btn">Asistencias</a>
+		    </nav>	
         </div>
         <div class="login">
             {% if user.is_authenticated %}
@@ -22,15 +31,12 @@
             {% endif %}
         </div>
     </header>
-    <main>
-        <section>
-            {% if user.is_authenticated %}
-            <p>Panel de Control: <span><a href="{% url 'principal' %}" style="color: white;">Principal</a></span></p>
-            {% endif%}
-        </section>
+<main>  
+    <div class="cuerpo ong">
         {% block content %}
         {% endblock %}
-    </main>
+    </div>
+</main>
     <footer>
         <p>Derechos Reservados ONG - ©Grupo 5</p>
     </footer>

@@ -1,6 +1,7 @@
-{% extends 'appong/base.html' %}
+{% extends 'Front_end/index.html' %}
 
 {% block content %}
+<div class="ong">
 Usuario: {{ user.username }}
 {% if user.is_superuser %}
 <h1>MODIFICAR VOLUNTARIO</h1>
@@ -8,9 +9,12 @@ Usuario: {{ user.username }}
 	{% csrf_token %}
 	{{ form.as_p }}
 	<button type="submit">Actualizar</button>
-	<button type="reset">Cancelar</button>
+	<a href="{% url 'listar_voluntarios' %}" class="cancel-link">
+        Cancelar
+    </a>
 </form>
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>
 {% endif %}
+</div>
 {% endblock %}

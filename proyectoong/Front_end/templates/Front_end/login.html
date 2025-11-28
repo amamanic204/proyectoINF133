@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="{% static 'Front_end/css/styles.css' %}">
     <title>Document</title>
 </head>
-<body class="login-body">
+<body class="front_end inicio">
     <h2>Inicia Sesión</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Entrar</button>
     </form>
-    <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
+    <p>¿No tienes una cuenta? <a href="{% url 'registro' %}" class="log">Registrarse</a></p>
 </body>
 </html>

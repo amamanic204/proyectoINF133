@@ -2,16 +2,15 @@
 {# {% extends 'appong/base.html' %} #}
 
 {% block content %}
-Usuario: {{ user.username }}
 {% if user.is_superuser %}
 <h2>Horas acumuladas de {{ voluntario.nombre }}</h2>
 <table>
     <thead>
         <tr>
-            <td>nombre</td>
-            <td>apellido</td>
-            <td>rol</td>
-            <td>horas_acumuladas</td>
+            <td style="background-color: #2e8b57; color: #ffffff;">nombre</td>
+            <td style="background-color: #2e8b57; color: #ffffff;">apellido</td>
+            <td style="background-color: #2e8b57; color: #ffffff;">rol</td>
+            <td style="background-color: #2e8b57; color: #ffffff;">horas_acumuladas</td>
         </tr>
     </thead>
     <tbody>

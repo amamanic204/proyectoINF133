@@ -11,11 +11,10 @@
 <body style="background-color: #d4f0dc;" class="front_end">
     
     <header>
+        
         <div class="titulo">
-            <h1>Pagina Principal ONG</h1>
-            <p>Bienvenido</p>
+            <a href="{% url 'principal' %}" id="logo"><strong>ONG</strong></a>
             <nav>
-		       <a href="{% url 'principal' %}" id="logo" ><strong>ONG</strong></a>
 		       <a href="{% url 'listar_eventos' %}" class="btn">Eventos</a>
 		       <a href="{% url 'listar_voluntarios' %}" class="btn">Voluntarios</a>
 		       <a href="{% url 'listar_inscritos' %}" class="btn">Inscritos</a>
@@ -24,7 +23,9 @@
         </div>
         <div class="login">
             {% if user.is_authenticated %}
+            
             <P class="user">{{ user.username |first|upper}}</P>
+            <p><a class="login_link" style="color: white;">{{ user.username }}</a></p>
             <p><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar sesión?')" class="login_link" style="color: white;">Cerrar Sesión</a></p>
             {% else %}
             <P class="login_link"><a href="{% url 'login' %}">Iniciar Sesión</a></P>

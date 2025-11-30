@@ -6,28 +6,28 @@
 {% if user.is_authenticated %}
 <h1>LISTADO DE VOLUNTARIOS</h1>
 <ul>
-	<li><a href="{% url 'horas_acumuladas' %}">Horas acumuladas</a></li>
+	<li><a href="{#{% url 'horas_acumuladas' %}#}">Horas acumuladas</a></li>
 </ul>
 <table>
 	<thead>
 		<tr>
-			<th>id_voluntario</th><th>nombre</th><th>apellido</th><th>rol</th><th>ci</th><th>correo</th><th>horas_acumuladas</th>
+			<th>id_voluntario</th><th>ci</th><th>nombre</th><th>apellido</th><th>fecha_nacimiento</th><th>correo</th><th>telefono</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for voluntario in voluntarios %}
 		<tr>
 			<td>{{ voluntario.id_voluntario }}</td>
+			<td>{{ voluntario.ci }}</td>
 			<td>{{ voluntario.nombre }}</td>
 			<td>{{ voluntario.apellido }}</td>
-			<td>{{ voluntario.rol }}</td>
-			<td>{{ voluntario.ci }}</td>
+			<td>{{ voluntario.fecha_nacimiento }}</td>
 			<td>{{ voluntario.correo }}</td>
-			<td>{{ voluntario.horas_acumuladas }}</td>
-			{% if user.is_superuser %}
+			<td>{{ voluntario.telefono }}</td>
+			{% if user.is_superuser  %}
 			<td><a href="{% url 'eliminar_voluntario' voluntario.id_voluntario %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
-			<td><a href="{% url 'cambiar_rol' voluntario.id_voluntario %}">Cambiar rol</a></td>
+			<td><a href="{#{% url 'cambiar_rol' voluntario.id_voluntario %}#}">Cambiar rol</a></td>
 			{% endif %}
 		</tr>
 		{% endfor %}

@@ -7,16 +7,17 @@
 <table>
 	<thead>
 		<tr>
-			<th>id_evento</th><th>nombre_evento</th><th>proposito</th><th>fecha_evento</th>
+			<th>id_evento</th><th>nombre</th><th>proposito</th><th>fecha_inicio</th><th>fecha_fin</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for evento in eventos %}
 		<tr>
 			<td>{{ evento.id_evento }}</td>
-			<td>{{ evento.nombre_evento }}</td>
+			<td>{{ evento.nombre }}</td>
 			<td>{{ evento.proposito }}</td>
-			<td>{{ evento.fecha_evento }}</td>
+			<td>{{ evento.fecha_inicio }}</td>
+			<td>{{ evento.fecha_fin }}</td>
 			{% if user.is_superuser %}
 			<td><a href="{% url 'eliminar_evento' evento.id_evento %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_evento' evento.id_evento %}">Modificar</a></td>

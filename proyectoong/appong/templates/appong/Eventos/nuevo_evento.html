@@ -2,7 +2,7 @@
 {# {% extends 'appong/base.html' %} #}
 
 {% block content %}
-{% if user.is_superuser %}
+{% if user.is_authenticated %}
 <h1>REGISTRAR EVENTO</h1>
 <form action="" method="POST">
 	{% csrf_token %}

@@ -1,53 +1,60 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-# Create your models here.
-class Evento(models.Model):
-	id_evento = models.AutoField(primary_key=True)
-	nombre_evento = models.CharField(max_length=200)
-	proposito = models.CharField(max_length=1000)
-	fecha_evento = models.DateField()
-	class Meta:
-		managed = False
-		db_table = 'eventos'
-class Voluntario(models.Model):
-	id_voluntario = models.AutoField(primary_key=True)
-	nombre = models.CharField(max_length=100)
-	apellido = models.CharField(max_length=100)
-	rol = models.CharField(max_length=100)
-	ci = models.CharField(max_length=100)
-	correo = models.EmailField(max_length=150)
-	horas_acumuladas = models.IntegerField()
-	class Meta:
-		managed = False
-		db_table = 'voluntarios'
-class Inscrito(models.Model):
-	id_inscrito = models.AutoField(primary_key=True)
-	nombre = models.CharField(max_length=100)
-	apellido = models.CharField(max_length=100)
-	ci = models.CharField(max_length=20)
-	fecha_nacimiento = models.DateField()
-	class Meta:
-		managed = False
-		db_table = 'inscritos'
+
 class Asistencia(models.Model):
-	id_asistencia = models.AutoField(primary_key=True)
-	evento = models.ForeignKey(
-		Evento,
-		on_delete = models.CASCADE,
-		db_column = 'id_evento'
-	)
-	voluntario = models.ForeignKey(
-		Voluntario,
-		on_delete = models.CASCADE,
-		db_column = 'id_voluntario'
-	)
-	inscrito = models.ForeignKey(
-		Inscrito,
-		on_delete = models.CASCADE,
-		db_column = 'id_inscrito'
-	)
-	hora_llegada = models.DateTimeField()
-	hora_salida = models.DateTimeField()
-	class Meta:
-		managed = False
-		db_table = 'asistencia'
+    id_asistencia = models.AutoField(primary_key=True)
+    id_evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
+    id_voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
+    hora_llegada = models.DateTimeField()
+    hora_salida = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'asistencias'
+
+class Evento(models.Model):
+    id_evento = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+    proposito = models.CharField(max_length=200)
+    fecha_inicio = models.DateTimeField()
+    fecha_fin = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'eventos'
+
+    def __str__(self):
+        return str(self.id_evento)+" | "+self.nombre
+
+class Inscripcion(models.Model):
+    id_inscripcion = models.AutoField(primary_key=True)
+    id_evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
+    id_voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
+    rol = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'inscripciones'
+
+class Voluntario(models.Model):
+    id_voluntario = models.AutoField(primary_key=True)
+    ci = models.IntegerField()
+    nombre = models.CharField(max_length=20)
+    apellido = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    correo = models.CharField(max_length=255)
+    telefono = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'voluntarios'
+
+    def __str__(self):
+        return str(self.id_voluntario)+" | "+self.nombre+" "+self.apellido

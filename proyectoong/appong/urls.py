@@ -13,18 +13,18 @@ urlpatterns = [
     path('nuevo_voluntario/', views.crear_voluntario, name='crear_voluntario'),
     path('eliminar_voluntario/<int:id>/', views.eliminar_voluntario, name='eliminar_voluntario'),
     path('modificar_voluntario/<int:id>', views.modificar_voluntario, name='modificar_voluntario'),
-    # crud inscritos
-    path('inscritos/', views.listar_inscritos, name='listar_inscritos'),
-    path('nuevo_inscrito/', views.crear_inscrito, name='crear_inscrito'),
-    path('eliminar_inscrito/<int:id>', views.eliminar_inscrito, name='eliminar_inscrito'),
-    path('modificar_inscrito/<int:id>', views.modificar_inscrito, name='modificar_inscrito'),
-    # crud asistencias
+    # crud inscripciones
+    path('inscripciones/', views.listar_inscripciones, name='listar_inscripciones'),
+    path('nuevo_inscripcion/', views.crear_inscripcion, name='crear_inscripcion'),
+    path('eliminar_inscripcion/<int:id>', views.eliminar_inscripcion, name='eliminar_inscripcion'),
+    path('modificar_inscripcion/<int:id>', views.modificar_inscripcion, name='modificar_inscripcion'),
+    # # crud asistencias
     path('asistencias/', views.listar_asistencias, name='listar_asistencias'),
     path('nueva_asistencia/', views.crear_asistencia, name='crear_asistencia'),
     path('eliminar_asistencia/<int:id>', views.eliminar_asistencia, name='eliminar_asistencia'),
     path('modificar_asistencia/<int:id>', views.modificar_asistencia, name='modificar_asistencia'),
-    # funcionalidades
-    path('horas_acumuladas/', views.horas_acumuladas, name='horas_acumuladas'),
-    path('verhoras/<int:id_voluntario>/', views.ver_horas_voluntario, name = 'ver_horas_voluntario'),
-    path('cambiar_rol/<int:id_voluntario>/', views.cambiar_rol, name='cambiar_rol'),
+    # # funcionalidades
+    # path('horas_acumuladas/', views.horas_acumuladas, name='horas_acumuladas'),
+    # path('verhoras/<int:id_voluntario>/', views.ver_horas_voluntario, name = 'ver_horas_voluntario'),
+    # path('cambiar_rol/<int:id_voluntario>/', views.cambiar_rol, name='cambiar_rol'),
 ]

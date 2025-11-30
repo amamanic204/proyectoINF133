@@ -1,0 +1,35 @@
+{% extends 'Front_end/index.html' %}
+{# {% extends 'appong/base.html' %} #}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>LISTADO DE INSCRIPCIONES</h1>
+<table>
+	<thead>
+		<tr>
+			<th>id_inscripcion</th><th>id_evento</th><th>id_voluntario</th><th>rol</th></th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		{% for inscripcion in inscripciones %}
+		<tr>
+			<td>{{ inscripcion.id_inscripcion }}</td>
+			<td>{{ inscripcion.id_evento }}</td>
+			<td>{{ inscripcion.id_voluntario }}</td>
+			<td>{{ inscripcion.rol  }}</td>
+			{% if user.is_superuser %}
+			<td><a href="{% url 'eliminar_inscripcion' inscripcion.id_inscripcion %}">Eliminar</a></td>
+			<td><a href="{% url 'modificar_inscripcion' inscripcion.id_inscripcion %}">Modificar</a></td>
+			{% endif %}
+		</tr>
+		{% endfor%}
+	</tbody>
+</table>
+{% if user.is_superuser %}
+<a href="{% url 'crear_inscripcion' %}">Nueva inscripcion</a>
+{% endif %}
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

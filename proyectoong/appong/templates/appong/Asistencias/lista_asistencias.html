@@ -7,16 +7,15 @@
 <table>
 	<thead>
 		<tr>
-			<th>id_asistencia</th><th>id_evento</th><th>id_voluntario</th><th>id_inscrito</th><th>hora_llegada</th><th>hora_salida</th>
+			<th>id_asistencia</th><th>id_evento</th><th>id_voluntario</th><th>hora_llegada</th><th>hora_salida</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for asistencia in asistencias %}
 		<tr>
 			<td>{{ asistencia.id_asistencia }}</td>
-			<td>{{ asistencia.evento.id_evento }}</td>
-			<td>{{ asistencia.voluntario.id_voluntario }}</td>
-			<td>{{ asistencia.inscrito.id_inscrito }}</td>
+			<td>{{ asistencia.id_evento }}</td>
+			<td>{{ asistencia.id_voluntario }}</td>
 			<td>{{ asistencia.hora_llegada }}</td>
 			<td>{{ asistencia.hora_salida }}</td>
 			{% if user.is_superuser %}

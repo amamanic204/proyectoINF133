@@ -1,7 +1,7 @@
 {% extends 'Front_end/base.html' %}
 
 {% block content %}
-{% if user.is_superuser %}
+{% if user.username == 'admin' or user.username == 'admin2' %}
 <h2>Horas acumuladas del voluntario {{ voluntario }}:</h2>
 <h1>{{ horas }}:{{ minutos }} Horas</h1>
 {% else %}

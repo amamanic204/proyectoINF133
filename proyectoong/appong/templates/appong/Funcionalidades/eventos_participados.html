@@ -1,7 +1,7 @@
 {% extends 'Front_end/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.username == 'admin' or user.username == 'admin2' %}
 <h1>EVENTOS PARTICIPADOS POR EL VOLUNTRAIO ({{ voluntario }})</h1>
 <table>
 	<thead>

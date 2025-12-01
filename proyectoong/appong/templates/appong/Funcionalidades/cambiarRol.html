@@ -1,6 +1,7 @@
 {% extends 'Front_end/base.html' %}
 
 {% block content %}
+{% if user.username == 'admin' or user.username == 'admin2' %}
 <div class="ong">
 <h2>Voluntario: {{ inscripcion.voluntario }}</h2>
 <h2>Evento: {{ inscripcion.evento}}</h2>
@@ -14,6 +15,9 @@
     </a>
 </form>
 </div>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
 {% endblock %}
 
 

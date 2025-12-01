@@ -1,7 +1,7 @@
 {% extends 'Front_end/base.html' %}
 
 {% block content %}
-{% if user.is_superuser %}
+{% if user.username == 'admin' or user.username == 'admin2' %}
 <h1>MODIFICAR CLIENTE</h1>
 <form action="" method="POST">
 	{% csrf_token %}

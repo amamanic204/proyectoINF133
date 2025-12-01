@@ -1,7 +1,7 @@
 {% extends 'Front_end/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.username == 'admin' or user.username == 'admin2' or user.username == 'operador01' or user.username == 'operador02' or user.username == 'operador03' %}
 <h1>LISTADO DE ASISTENCIAS</h1>
 <table>
 	<thead>
@@ -17,7 +17,7 @@
 			<td>{{ asistencia.voluntario }}</td>
 			<td>{{ asistencia.hora_llegada }}</td>
 			<td>{{ asistencia.hora_salida }}</td>
-			{% if user.is_superuser %}
+			{% if user.username == 'admin' or user.username == 'admin2' %}
 			<td><a href="{% url 'eliminar_asistencia' asistencia.id_asistencia %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_asistencia' asistencia.id_asistencia %}">Modificar</a></td>
 			{% endif %}
@@ -26,7 +26,7 @@
 	</tbody>
 </table>
 <img src="">
-{% if user.is_superuser %}
+{% if user.username == 'admin' or user.username == 'admin2' %}
 <a href="{% url 'nueva_asistencia' %}">Nueva Asistencia</a>
 {% endif %}
 {% else %}

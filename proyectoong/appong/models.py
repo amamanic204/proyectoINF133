@@ -10,8 +10,8 @@ from django.db import models
 
 class Asistencia(models.Model):
     id_asistencia = models.AutoField(primary_key=True)
-    id_evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
-    id_voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
+    evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
+    voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
     hora_llegada = models.DateTimeField()
     hora_salida = models.DateTimeField(blank=True, null=True)
 
@@ -31,12 +31,12 @@ class Evento(models.Model):
         db_table = 'eventos'
 
     def __str__(self):
-        return str(self.id_evento)+" | "+self.nombre
+        return self.nombre
 
 class Inscripcion(models.Model):
     id_inscripcion = models.AutoField(primary_key=True)
-    id_evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
-    id_voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
+    evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='id_evento')
+    voluntario = models.ForeignKey('Voluntario', models.DO_NOTHING, db_column='id_voluntario')
     rol = models.CharField(max_length=100)
 
     class Meta:
@@ -57,4 +57,4 @@ class Voluntario(models.Model):
         db_table = 'voluntarios'
 
     def __str__(self):
-        return str(self.id_voluntario)+" | "+self.nombre+" "+self.apellido
+        return self.nombre+" "+self.apellido

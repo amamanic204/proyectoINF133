@@ -14,20 +14,15 @@ def crear_evento(request):
 	if request.method == 'POST':
 		form = EventoForm(request.POST)
 		if form.is_valid():
-			Evento.objects.create(
-				nombre = form.cleaned_data['nombre'],
-				proposito = form.cleaned_data['proposito'],
-				fecha_inicio = form.cleaned_data['fecha_inicio'],
-				fecha_fin = form.cleaned_data['fecha_fin']
-			)
-			return redirect('listar_eventos')
+			form.save()
+			return redirect('eventos')
 	else:
 		form = EventoForm()
 		return render(request, 'appong/Eventos/nuevo_evento.html', { 'form': form })
 def eliminar_evento(request, id):
 	evento = get_object_or_404(Evento, id_evento=id)
 	evento.delete()
-	return redirect('listar_eventos')
+	return redirect('eventos')
 def modificar_evento(request, id):
 	evento = get_object_or_404(Evento, id_evento=id)
 	if request.method == 'POST':
@@ -38,7 +33,7 @@ def modificar_evento(request, id):
 			evento.fecha_inicio = form.cleaned_data['fecha_inicio']
 			evento.fecha_fin = form.cleaned_data['fecha_fin']
 			evento.save()
-			return redirect('listar_eventos')
+			return redirect('eventos')
 	else:
 		form = EventoForm(initial={
 			'nombre': evento.nombre,
@@ -57,14 +52,14 @@ def crear_voluntario(request):
 		form = VoluntarioForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('listar_voluntarios')
+			return redirect('voluntarios')
 	else:
 		form = VoluntarioForm()
 		return render(request, 'appong/Voluntarios/nuevo_voluntario.html', { 'form': form })
 def eliminar_voluntario(request, id):
 	voluntario = get_object_or_404(Voluntario, id_voluntario=id)
 	voluntario.delete()
-	return redirect('listar_voluntarios')
+	return redirect('voluntarios')
 def modificar_voluntario(request, id):
 	voluntario = get_object_or_404(Voluntario, id_voluntario=id)
 	if request.method == 'POST':
@@ -77,8 +72,10 @@ def modificar_voluntario(request, id):
 			voluntario.correo = form.cleaned_data['correo']
 			voluntario.telefono = int(form.cleaned_data['telefono'])
 			voluntario.save()
-			return redirect('listar_voluntarios')
+			return redirect('voluntarios')
 	else:
+		print('-------------------------')
+		print(voluntario.fecha_nacimiento)
 		form = VoluntarioForm(initial={
 			'ci': voluntario.ci,
 			'nombre': voluntario.nombre,
@@ -99,28 +96,28 @@ def crear_inscripcion(request):
 		form = InscripcionForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('listar_inscripciones')
+			return redirect('inscripciones')
 	else:
 		form = InscripcionForm()
-		return render(request, 'appong/Inscripciones/nuevo_inscripcion.html', { 'form': form })
+		return render(request, 'appong/Inscripciones/nueva_inscripcion.html', { 'form': form })
 def eliminar_inscripcion(request, id):
 	inscripcion = get_object_or_404(Inscripcion, id_inscripcion=id)
 	inscripcion.delete()
-	return redirect('listar_inscripciones')
+	return redirect('inscripciones')
 def modificar_inscripcion(request, id):
 	inscripcion = get_object_or_404(Inscripcion, id_inscripcion=id)
 	if request.method == 'POST':
 		form = InscripcionForm(request.POST)
 		if form.is_valid():
-			inscripcion.id_evento = form.cleaned_data['id_evento']
-			inscripcion.id_voluntario = form.cleaned_data['id_voluntario']
+			inscripcion.evento = form.cleaned_data['evento']
+			inscripcion.voluntario = form.cleaned_data['voluntario']
 			inscripcion.rol = form.cleaned_data['rol']
 			inscripcion.save()
-			return redirect('listar_inscripciones')
+			return redirect('inscripciones')
 	else:
 		form = InscripcionForm(initial={
-			'id_evento': inscripcion.id_evento,
-			'id_voluntario': inscripcion.id_voluntario,
+			'evento': inscripcion.evento,
+			'voluntario': inscripcion.voluntario,
 			'rol': inscripcion.rol,
 		})
 		return render(request, 'appong/Inscripciones/actualizar_inscripcion.html', { 'form': form })
@@ -134,29 +131,29 @@ def crear_asistencia(request):
 		form = AsistenciaForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('listar_asistencias')
+			return redirect('asistencias')
 	else:
 		form = AsistenciaForm()
 		return render(request, 'appong/Asistencias/nueva_asistencia.html', { 'form': form })
 def eliminar_asistencia(request, id):
 	asistencia = get_object_or_404(Asistencia, id_asistencia=id)
 	asistencia.delete()
-	return redirect('listar_asistencias')
+	return redirect('asistencias')
 def modificar_asistencia(request, id):
 	asistencia = get_object_or_404(Asistencia, id_asistencia=id)
 	if request.method == 'POST':
 		form = AsistenciaForm(request.POST)
 		if form.is_valid():
-			asistencia.id_evento = form.cleaned_data['id_evento']
-			asistencia.id_voluntario = form.cleaned_data['id_voluntario']
+			asistencia.evento = form.cleaned_data['evento']
+			asistencia.voluntario = form.cleaned_data['voluntario']
 			asistencia.hora_llegada = form.cleaned_data['hora_llegada']
 			asistencia.hora_salida = form.cleaned_data['hora_salida']
 			asistencia.save()
-			return redirect('listar_asistencias')
+			return redirect('asistencias')
 	else:
 		form = AsistenciaForm(initial={
-			'id_evento': asistencia.id_evento,
-			'id_voluntario': asistencia.id_voluntario,
+			'evento': asistencia.evento,
+			'voluntario': asistencia.voluntario,
 			'hora_llegada': asistencia.hora_llegada,
 			'hora_salida': asistencia.hora_salida,
 		})
@@ -185,11 +182,14 @@ def cambiar_rol(request, id_voluntario):
         return redirect('listar_voluntarios')
     return render(request, 'appong/Voluntarios/cambiarRol.html', {'voluntario': voluntario})
 
+# Mostrar hoja de asistencia del evento x
+def hoja_asistencia_evento(request, id):
+	evento = get_object_or_404(Evento, id_evento=id)
+	asistencias = Asistencia.objects.filter(evento=evento)
+	return render(request, 'appong/Funcionalidades/hoja_asistencia.html', {'asistencias':asistencias, 'evento':evento})
 
-# | id_voluntario    | int          | NO   | PRI | NULL    | auto_increment |
-# | ci               | int          | NO   | UNI | NULL    |                |
-# | nombre           | varchar(20)  | NO   |     | NULL    |                |
-# | apellido         | varchar(100) | NO   |     | NULL    |                |
-# | fecha_nacimiento | date         | NO   |     | NULL    |                |
-# | correo           | varchar(255) | NO   | UNI | NULL    |                |
-# | telefono
+# mostrar eventos participados por el voluntario x
+def eventos_participados(request, id):
+	voluntario = get_object_or_404(Voluntario, id_voluntario=id)
+	inscripciones = Inscripcion.objects.filter(voluntario=voluntario)
+	return render(request, 'appong/Funcionalidades/eventos_participados.html', {'inscripciones': inscripciones, 'voluntario':voluntario})

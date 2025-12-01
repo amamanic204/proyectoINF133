@@ -21,13 +21,14 @@
 			{% if user.is_superuser %}
 			<td><a href="{% url 'eliminar_evento' evento.id_evento %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_evento' evento.id_evento %}">Modificar</a></td>
+			<td><a href="{% url 'hoja_asistencia_evento' evento.id_evento %}">Hoja de Asistencia</a></td>
 			{% endif %}
 		</tr>
 		{% endfor%}
 	</tbody>
 </table>
 {% if user.is_superuser%}
-<a href="{% url 'crear_evento' %}">Nuevo Evento</a>
+<a href="{% url 'nuevo_evento' %}">Nuevo Evento</a>
 {% endif %}
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>

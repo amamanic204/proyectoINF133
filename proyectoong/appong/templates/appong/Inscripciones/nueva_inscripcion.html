@@ -3,12 +3,12 @@
 
 {% block content %}
 {% if user.is_superuser %}
-<h1>REGISTRAR VOLUNTARIO</h1>
+<h1>REGISTRAR INSCRIPCION</h1>
 <form action="" method="POST">
 	{% csrf_token %}
 	{{ form.as_p }}
 	<button type="submit">Enviar</button>
-	<a href="{% url 'listar_inscripciones' %}" class="cancel-link">
+	<a href="{% url 'inscripciones' %}" class="cancel-link">
         Cancelar
     </a>
 </form>

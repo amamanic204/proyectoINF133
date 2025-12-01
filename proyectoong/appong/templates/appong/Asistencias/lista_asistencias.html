@@ -7,15 +7,15 @@
 <table>
 	<thead>
 		<tr>
-			<th>id_asistencia</th><th>id_evento</th><th>id_voluntario</th><th>hora_llegada</th><th>hora_salida</th>
+			<th>id_asistencia</th><th>evento</th><th>voluntario</th><th>hora_llegada</th><th>hora_salida</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for asistencia in asistencias %}
 		<tr>
 			<td>{{ asistencia.id_asistencia }}</td>
-			<td>{{ asistencia.id_evento }}</td>
-			<td>{{ asistencia.id_voluntario }}</td>
+			<td>{{ asistencia.evento }}</td>
+			<td>{{ asistencia.voluntario }}</td>
 			<td>{{ asistencia.hora_llegada }}</td>
 			<td>{{ asistencia.hora_salida }}</td>
 			{% if user.is_superuser %}
@@ -28,7 +28,7 @@
 </table>
 <img src="">
 {% if user.is_superuser %}
-<a href="{% url 'crear_asistencia' %}">Nueva Asistencia</a>
+<a href="{% url 'nueva_asistencia' %}">Nueva Asistencia</a>
 {% endif %}
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>

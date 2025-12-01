@@ -27,14 +27,15 @@
 			{% if user.is_superuser  %}
 			<td><a href="{% url 'eliminar_voluntario' voluntario.id_voluntario %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
-			<td><a href="{#{% url 'cambiar_rol' voluntario.id_voluntario %}#}">Cambiar rol</a></td>
+			<td><a href="{#{% url 'cambiar_rol' voluntario.id_voluntario %}#}">Cambiar Rol</a></td>
+			<td><a href="{% url 'eventos_participados' voluntario.id_voluntario %}">Eventos Participados</a></td>
 			{% endif %}
 		</tr>
 		{% endfor %}
 	</tbody>
 </table>
 {% if user.is_superuser %}
-<a href="{% url 'crear_voluntario' %}">Nueva voluntario</a>
+<a href="{% url 'nuevo_voluntario' %}">Nueva voluntario</a>
 {% endif %}
 
 {% else %}

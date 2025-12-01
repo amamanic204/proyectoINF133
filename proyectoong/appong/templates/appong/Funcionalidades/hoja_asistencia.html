@@ -1,0 +1,26 @@
+{% extends 'Front_end/index.html' %}
+{# {% extends 'appong/base.html' %} #}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>ASISTENCIA DE VOLUNTARIOS DEL EVENTO ( {{evento}} )</h1>
+<table>
+	<thead>
+		<tr>
+			<th>voluntario</th><th>hora_llegada</th><th>hora_salida</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for asistencia in asistencias %}
+		<tr>
+			<td>{{ asistencia.voluntario }}</td>
+			<td>{{ asistencia.hora_llegada }}</td>
+			<td>{{ asistencia.hora_salida }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<h2>Ud no tiene permiso para la app ong</h2>
+{% endif %}
+{% endblock %}

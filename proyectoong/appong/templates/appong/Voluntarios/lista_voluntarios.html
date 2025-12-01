@@ -1,13 +1,9 @@
-{% extends 'Front_end/index.html' %}
-{# {% extends 'appong/base.html' %} #}
+{% extends 'Front_end/base.html' %}
 
 {% block content %}
 <div class="ong">
 {% if user.is_authenticated %}
 <h1>LISTADO DE VOLUNTARIOS</h1>
-<ul>
-	<li><a href="{#{% url 'horas_acumuladas' %}#}">Horas acumuladas</a></li>
-</ul>
 <table>
 	<thead>
 		<tr>
@@ -27,8 +23,8 @@
 			{% if user.is_superuser  %}
 			<td><a href="{% url 'eliminar_voluntario' voluntario.id_voluntario %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_voluntario' voluntario.id_voluntario %}">Modificar</a></td>
-			<td><a href="{#{% url 'cambiar_rol' voluntario.id_voluntario %}#}">Cambiar Rol</a></td>
 			<td><a href="{% url 'eventos_participados' voluntario.id_voluntario %}">Eventos Participados</a></td>
+			<td><a href="{% url 'horas_acumuladas' voluntario.id_voluntario %}">Horas Acumuladas</a></td>
 			{% endif %}
 		</tr>
 		{% endfor %}

@@ -1,27 +1,9 @@
-{% extends 'Front_end/index.html' %}
-{# {% extends 'appong/base.html' %} #}
+{% extends 'Front_end/base.html' %}
 
 {% block content %}
 {% if user.is_superuser %}
-<h2>Horas acumuladas de {{ voluntario.nombre }}</h2>
-<table>
-    <thead>
-        <tr>
-            <td style="background-color: #2e8b57; color: #ffffff;">nombre</td>
-            <td style="background-color: #2e8b57; color: #ffffff;">apellido</td>
-            <td style="background-color: #2e8b57; color: #ffffff;">rol</td>
-            <td style="background-color: #2e8b57; color: #ffffff;">horas_acumuladas</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ voluntario.nombre }}</td>
-            <td>{{ voluntario.apellido }}</td>
-            <td>{{ voluntario.rol }}</td>
-            <td>{{ voluntario.horas_acumuladas }}</td>
-        </tr>
-    </tbody>
-</table>
+<h2>Horas acumuladas del voluntario {{ voluntario }}:</h2>
+<h1>{{ horas }}:{{ minutos }} Horas</h1>
 {% else %}
 <h2>Ud no tiene permiso para la app ong</h2>
 {% endif %}

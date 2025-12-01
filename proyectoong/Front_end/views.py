@@ -5,7 +5,10 @@ from django.contrib.auth import login
 # Create your views here.
 
 def index(request):
-    return render(request, 'appong/principal.html')
+    if request.user.is_authenticated:
+        return render(request, 'Front_end/index.html')
+    else:
+        return redirect('login')
 
 #Cerrar Sesión Cuenta
 def cerrar_sesion(request):
@@ -23,7 +26,7 @@ def registro (request):
             usuario.is_staff = False
             usuario.save()
             login(request,usuario)
-            return redirect("principal")
+            return redirect("index")
     else:
         form = UserCreationForm()
     return render(request, 'Front_end/registro.html', {'form': form})

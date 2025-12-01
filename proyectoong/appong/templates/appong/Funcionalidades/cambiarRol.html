@@ -1,0 +1,19 @@
+{% extends 'Front_end/base.html' %}
+
+{% block content %}
+<div class="ong">
+<h2>Voluntario: {{ inscripcion.voluntario }}</h2>
+<h2>Evento: {{ inscripcion.evento}}</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="rol">Ingrese el nuevo rol:</label>
+    <input type="text" name="rol" placeholder="{{ inscripcion.rol }}">
+    <button type="submit">Aceptar</button>
+    <a href="{% url 'inscripciones' %}" class="cancel-link">
+        Cancelar
+    </a>
+</form>
+</div>
+{% endblock %}
+
+

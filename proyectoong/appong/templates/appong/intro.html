@@ -1,0 +1,18 @@
+{% extends "Front_end/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+	<strong><h1>BIENVENIDO A LA AGENDA DE VOLUNTARIOS</h1></strong>
+  <p>En esta sitio web encontraras lo que necesitas para poder administrar los <strong>VOLUNTARIOS</strong> de tu <strong>ONG</strong>.</p>
+  <br>
+  <ul>
+    <li>Tiempo de enlistar un voluntario a un evento? Gestiona las <strong>INSCRIPCIONES</strong> <a href="{% url 'inscripciones' %}">aqui</a>.</li>
+    <li>Encontraste un rol perfecto para un voluntario? Cambia los roles de los <strong>VOLUNTARIOS</strong> <a href="{% url 'inscripciones' %}">aqui</a>.</li>
+    <li>Quieres conocer todas las asistencias de un voluntario? Ten la lista completa de las <strong>ASISTENCIAS</strong> de ese voluntario <a href="{% url 'inscripciones' %}">aqui</a>.</li>
+    <li>Sabes cuanto timpo un voluntario ha dado por los demas? Calculalo <a href="{% url 'voluntarios' %}">aqui</a>.</li>
+    <li>Averigua todos los <strong>EVENTOS</strong> que un voluntario ha participado <a href="{% url 'voluntarios' %}">aqui</a>.</li>
+  </ul>
+  <p><strong>OJO</strong>: Las acciones que puedes realizar son limitados de acuerdo a los permisos otorgados a tu usuario. Es decir, probablemente no puedas realizar todas las funciones que ofrece el sitio web.</p>
+{% else %}
+  <p>No tienes acceso a esta pagina.</p>
+{% endif %}
+{% endblock %}

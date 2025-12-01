@@ -3,7 +3,7 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.principal, name='principal'),
+    path('', views.intro, name='intro'),
     path('eventos/', views.listar_eventos, name='eventos'),
     path('nuevo_evento/', views.crear_evento, name='nuevo_evento'),
     path('eliminar_evento/<int:id>/', views.eliminar_evento, name='eliminar_evento'),
@@ -24,9 +24,8 @@ urlpatterns = [
     path('eliminar_asistencia/<int:id>', views.eliminar_asistencia, name='eliminar_asistencia'),
     path('modificar_asistencia/<int:id>', views.modificar_asistencia, name='modificar_asistencia'),
     # # funcionalidades
-    # path('horas_acumuladas/', views.horas_acumuladas, name='horas_acumuladas'),
-    # path('verhoras/<int:id_voluntario>/', views.ver_horas_voluntario, name = 'ver_horas_voluntario'),
-    # path('cambiar_rol/<int:id_voluntario>/', views.cambiar_rol, name='cambiar_rol'),
+    path('horas_acumuladas/<int:id>', views.horas_acumuladas, name='horas_acumuladas'),
+    path('cambiar_rol/<int:id>/', views.cambiar_rol, name='cambiar_rol'),
     path('hoja_asistencia/<int:id>', views.hoja_asistencia_evento, name='hoja_asistencia_evento'),
     path('eventos_participados/<int:id>', views.eventos_participados, name='eventos_participados'),
 ]

@@ -65,7 +65,7 @@
 main {
     position: relative; 
     padding: 50px; 
-    min-height: auto; 
+    min-height: 100vh; 
     height: auto;     
     display: flex; 
     flex-direction: column; 

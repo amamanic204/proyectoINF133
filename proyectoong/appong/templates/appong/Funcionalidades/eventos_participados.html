@@ -1,5 +1,4 @@
-{% extends 'Front_end/index.html' %}
-{# {% extends 'appong/base.html' %} #}
+{% extends 'Front_end/base.html' %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -7,12 +6,13 @@
 <table>
 	<thead>
 		<tr>
-			<th>id_evento</th><th>rol</th></th>
+			<th>id_evento</th><th>evento</th><th>rol</th></th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for inscripcion in inscripciones %}
 		<tr>
+			<td>{{ inscripcion.evento.id_evento }}</td>
 			<td>{{ inscripcion.evento }}</td>
 			<td>{{ inscripcion.rol  }}</td>
 		</tr>

@@ -3,9 +3,8 @@ from .models import Evento, Voluntario, Inscripcion, Asistencia
 from .forms import EventoForm, VoluntarioForm, InscripcionForm, AsistenciaForm
 
 # Create your views here.
-def principal(request):
-	return render(request, 'appong/principal.html')
-
+def intro(request):
+	return render(request, 'appong/intro.html')
 #  CRUD Eventos
 def listar_eventos(request):
 	eventos = Evento.objects.all()
@@ -74,8 +73,6 @@ def modificar_voluntario(request, id):
 			voluntario.save()
 			return redirect('voluntarios')
 	else:
-		print('-------------------------')
-		print(voluntario.fecha_nacimiento)
 		form = VoluntarioForm(initial={
 			'ci': voluntario.ci,
 			'nombre': voluntario.nombre,
@@ -161,26 +158,26 @@ def modificar_asistencia(request, id):
 
 #Funcionalidad Voluntarios
 #Horas Acumuladas de Voluntarios
-def horas_acumuladas(request):
-    voluntarios = Voluntario.objects.all()
-    if request.method == 'POST':
-        id_voluntario = request.POST.get('voluntario')
-        if id_voluntario:
-            return redirect('ver_horas_voluntario', id_voluntario = id_voluntario)
-    return render(request, 'appong/Funcionalidades/form_horas_acumuladas.html', {"voluntarios" : voluntarios})
-
-def ver_horas_voluntario(request, id_voluntario):
-	voluntario = get_object_or_404(Voluntario, id_voluntario=id_voluntario)
-	return render(request, 'appong/Funcionalidades/horas_acumuladas.html', { 'voluntario': voluntario })
+def horas_acumuladas(request, id):
+	voluntario = get_object_or_404(Voluntario, id_voluntario=id)
+	asistencias = Asistencia.objects.filter(voluntario=voluntario)
+	total_minutos = 0
+	for asistencia in asistencias:
+		salida = asistencia.hora_salida
+		llegada = asistencia.hora_llegada
+		total_minutos += (salida.hour - llegada.hour)*60 + (salida.minute - llegada.minute)
+	horas = total_minutos//60
+	minutos = total_minutos%60
+	return render(request, 'appong/Funcionalidades/horas_acumuladas.html', {'voluntario': voluntario, 'horas': horas, 'minutos': minutos })
 
 #Cambiar Rol
-def cambiar_rol(request, id_voluntario):
-    voluntario = get_object_or_404(Voluntario, id_voluntario=id_voluntario)
+def cambiar_rol(request, id):
+    inscripcion = get_object_or_404(Inscripcion, id_inscripcion=id)
     if request.method == 'POST':
-        voluntario.rol = 'Cocina' if voluntario.rol == 'Logistica' else 'Logistica'
-        voluntario.save()
-        return redirect('listar_voluntarios')
-    return render(request, 'appong/Voluntarios/cambiarRol.html', {'voluntario': voluntario})
+        inscripcion.rol = request.POST.get('rol')
+        inscripcion.save()
+        return redirect('inscripciones')
+    return render(request, 'appong/Funcionalidades/cambiarRol.html', {'inscripcion': inscripcion})
 
 # Mostrar hoja de asistencia del evento x
 def hoja_asistencia_evento(request, id):

@@ -1,5 +1,4 @@
-{% extends 'Front_end/index.html' %}
-{# {% extends 'appong/base.html' %} #}
+{% extends 'Front_end/base.html' %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -21,6 +20,7 @@
 			{% if user.is_superuser %}
 			<td><a href="{% url 'eliminar_inscripcion' inscripcion.id_inscripcion %}">Eliminar</a></td>
 			<td><a href="{% url 'modificar_inscripcion' inscripcion.id_inscripcion %}">Modificar</a></td>
+			<td><a href="{% url 'cambiar_rol' inscripcion.id_inscripcion %}">Cambiar Rol</a></td>
 			{% endif %}
 		</tr>
 		{% endfor%}

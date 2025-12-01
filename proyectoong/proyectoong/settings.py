@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'proyectoong.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'principal'
+LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
 
 
@@ -87,7 +87,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'voluntarios_ong',
+        'NAME': 'archong',
         'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'root',

@@ -1,45 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'Front_end/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'appong/css/styles.css' %}">
-    <title>Pagina ONG</title>
-</head>
-<body style="background-color: #d4f0dc;" class="front_end">
-    
-    <header>
-        
-        <div class="titulo">
-            <a href="{% url 'principal' %}" id="logo"><strong>ONG</strong></a>
-            <nav>
-		       <a href="{% url 'eventos' %}" class="btn">Eventos</a>
-		       <a href="{% url 'voluntarios' %}" class="btn">Voluntarios</a>
-		       <a href="{% url 'inscripciones' %}" class="btn">Inscripciones</a>
-		       <a href="{% url 'asistencias' %}" class="btn">Asistencias</a>
-		    </nav>	
-        </div>
-        <div class="login">
-            {% if user.is_authenticated %}
-            
-            <P class="user">{{ user.username |first|upper}}</P>
-            <p><a class="login_link" style="color: white;">{{ user.username }}</a></p>
-            <p><a href="{% url 'logout' %}" onclick="return confirm('¿Quiere cerrar sesión?')" class="login_link" style="color: white;">Cerrar Sesión</a></p>
-            {% else %}
-            <P class="login_link"><a href="{% url 'login' %}">Iniciar Sesión</a></P>
-            {% endif %}
-        </div>
-    </header>
-<main>  
-    <div class="cuerpo ong">
-        {% block content %}
-        {% endblock %}
-    </div>
-</main>
-    <footer>
-        <p>Derechos Reservados ONG - ©Grupo 5</p>
-    </footer>
-</body>
-</html>
+{% extends "Front_end/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+	<style>
+        @keyframes miAnimacion {
+          0%   {text-shadow:
+                2px 2px 0px black,
+                -2px 2px 0px black,
+                2px -2px 0px black,
+                -2px -2px 0px black;}
+          50%  {text-shadow:
+                20px 20px 0px black,
+                -2px 2px 0px black,
+                2px -2px 0px black,
+                -2px -2px 0px black;}
+          100% {text-shadow:
+                10px 10px 0px black,
+                -2px 2px 0px black,
+                2px -2px 0px black,
+                -2px -2px 0px black;}
+        }
+        @keyframes miAnimacion2 {
+          0% {
+            filter: blur(10px);
+          }
+          100% {
+            filter: blur(0);
+          }
+        }
+        .cuerpo strong {
+            color: white;
+            font-size: 150px;
+            text-shadow:
+                10px 10px 0px black,
+                -2px 2px 0px black,
+                2px -2px 0px black,
+                -2px -2px 0px black;
+            animation-name: miAnimacion;
+            animation-duration: 1.5s;
+        }
+        body {
+          animation-name: miAnimacion2;
+          animation-duration: 1s;
+        }
+	</style>
+	<strong>BIENVENIDO</strong>
+  <h1>A LA AGENDA DE VOLUNTARIOS</h1>
+  <a href="{% url 'intro' %}">EMPEZAR</a>
+{% else %}
+  <p>Acceso restringido.</p>
+{% endif %}
+{% endblock %}
